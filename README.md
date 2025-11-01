@@ -1,4 +1,4 @@
-# EliteCart | Modern E-Commerce Platform
+# EliteCart | Modern E-Commerce Platform With Bootstrap 5
 
 ### Overview
 
@@ -180,9 +180,10 @@ class CustomProductManager extends ProductManager {
 - Test on different screen sizes
 - Verify Bootstrap CSS is loaded
 
-##### License
+##### License and Contact
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+- This project is licensed under the MIT License - see the LICENSE file for details.
+- **Email:** abu.kayser.official@gmail.com
 
 ##### Acknowledgments
 
