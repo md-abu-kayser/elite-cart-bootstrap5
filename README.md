@@ -55,9 +55,9 @@ bags/
 logo.png
 README.md # Project documentation
 
-### Technology Stack
+## Technology Stack
 
-#### Frontend Technologies
+### Frontend Technologies
 
 - HTML5 - Semantic markup and modern structure
 - CSS3 - Custom properties, Grid, Flex-box, Animations
