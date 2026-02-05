@@ -1,4 +1,4 @@
-# EliteCart | Modern E-Commerce Platform With Bootstrap 5
+# EliteCart - Modern E-Commerce Frontend (Bootstrap 5)
 
 ### Overview
 
