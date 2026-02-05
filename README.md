@@ -39,7 +39,7 @@ EliteCart is a premium, fully-responsive e-commerce frontend solution that combi
 - Vibrant Orange--> #ea580c
 - Elegant Pink----> #db2777
 
-### Project Structure
+## Project Structure
 
 elitecart/
 index.html # Main application file
@@ -57,7 +57,7 @@ README.md # Project documentation
 
 ## Technology Stack
 
-### Frontend Technologies
+1. **Frontend Technologies:**
 
 - HTML5 - Semantic markup and modern structure
 - CSS3 - Custom properties, Grid, Flex-box, Animations
@@ -66,7 +66,7 @@ README.md # Project documentation
 - Font Awesome - Icon library
 - Google Fonts - Inter font family
 
-### Development Features
+2. **Development Features:**
 
 - Responsive Design - Mobile-first approach
 - Cross-Browser Compatible - Works on all modern browsers
@@ -76,13 +76,13 @@ README.md # Project documentation
 
 ## Quick Start
 
-### Prerequisites
+## Prerequisites
 
 1. Modern web browser (Chrome, Firefox, Safari, Edge)
 2. Local server (for development)
 3. Basic understanding of HTML, CSS & Bootstrap5, JavaScript
 
-### Installation | Set up | Git pages
+## Installation | Set up | Git pages
 
 1. **Clone the repository:**
 
@@ -142,7 +142,7 @@ productManager.toggleWishlist(productElement);
 
 ### Advanced Configuration
 
-### Custom Theme Development
+1. **Custom Theme Development:**
 
 /_ Create your own theme _/
 [data-color-theme="your-theme"] {
@@ -151,7 +151,7 @@ productManager.toggleWishlist(productElement);
 /_ Add more custom properties _/
 }
 
-### Extending Functionality
+2. **Extending Functionality:**
 
 // Add custom product types
 class CustomProductManager extends ProductManager {
