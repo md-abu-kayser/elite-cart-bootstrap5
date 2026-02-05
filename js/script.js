@@ -1,6 +1,7 @@
 // JS Start
 // ----------------------------------------------------->
 // Here is Theme Management
+// ----------------------------------------------
 class ThemeManager {
   constructor() {
     this.currentTheme = "modern-blue";
@@ -211,7 +212,7 @@ class ProductManager {
 
   updateCartBadge() {
     const cartBadge = document.querySelector(
-      ".user-action-btn:nth-child(3) .action-badge"
+      ".user-action-btn:nth-child(3) .action-badge",
     );
     if (cartBadge) {
       cartBadge.textContent = this.cart.length;
@@ -306,7 +307,7 @@ class SearchManager {
     const searchBtn = document.querySelector(".search-btn");
 
     searchInput.addEventListener("input", (e) =>
-      this.handleSearch(e.target.value)
+      this.handleSearch(e.target.value),
     );
     searchBtn.addEventListener("click", () => this.performSearch());
     searchInput.addEventListener("keypress", (e) => {
@@ -385,7 +386,7 @@ class NewsletterManager {
 
   showLoading() {
     const submitBtn = document.querySelector(
-      '.newsletter-form button[type="submit"]'
+      '.newsletter-form button[type="submit"]',
     );
     const originalText = submitBtn.innerHTML;
     submitBtn.innerHTML =
@@ -395,7 +396,7 @@ class NewsletterManager {
 
   hideLoading() {
     const submitBtn = document.querySelector(
-      '.newsletter-form button[type="submit"]'
+      '.newsletter-form button[type="submit"]',
     );
     submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Subscribe';
     submitBtn.disabled = false;
@@ -524,7 +525,8 @@ window.addEventListener(
       e.target.alt = "Image not available";
     }
   },
-  true
+  true,
 );
 
 // JS End
+// --------------------------------------------------------------------------------------------------------->
