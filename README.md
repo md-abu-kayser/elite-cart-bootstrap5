@@ -97,8 +97,9 @@ git clone https://github.com/md-abu-kayser/elite-cart-bootstrap5.git
 
 3. **Github live page:**
 
-```
-https://md-abu-kayser.github.io/elite-cart-with-bootstrap-5/
+```bash
+https://md-abu-kayser.github.io/elite-cart-bootstrap5/
+
 ```
 
 ### Theme Customization
