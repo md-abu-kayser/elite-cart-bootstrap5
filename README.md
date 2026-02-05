@@ -74,9 +74,9 @@ README.md # Project documentation
 - SEO Friendly - Proper semantic structure
 - Accessibility - WCAG guidelines compliance
 
-### Quick Start
+## Quick Start
 
-#### Prerequisites
+### Prerequisites
 
 1. Modern web browser (Chrome, Firefox, Safari, Edge)
 2. Local server (for development)
@@ -86,8 +86,8 @@ README.md # Project documentation
 
 1. **Clone the repository:**
 
-```
-git clone https://github.com/md-abu-kayser/elite-cart-with-bootstrap-5.git
+```bash
+git clone https://github.com/md-abu-kayser/elite-cart-bootstrap5.git
 
 ```
 
