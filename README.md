@@ -177,21 +177,21 @@ class CustomProductManager extends ProductManager {
 
 ### Troubleshooting
 
-#### Common Issues
+**Common Issues:**
 
-#### Images not loading?
+1. **Images not loading?**
 
 - Check the images folder structure
 - Ensure file names match exactly
 - Verify image paths in HTML
 
-### Themes not working?
+2. **Themes not working?**
 
 - Check browser console for errors
 - Ensure JavaScript is enabled
 - Clear browser cache and reload
 
-### Responsive issues?
+3. **Responsive issues?**
 
 - Check viewport meta tag
 - Test on different screen sizes
@@ -211,23 +211,22 @@ class CustomProductManager extends ProductManager {
 
 ---
 
-### Contact and Maintainer
+### Contact & Maintainer
 
-**Maintainer:** [md-abu-kayser](https://github.com/md-abu-kayser)  
-**Name:** Md Abu Kayser - Full-Stack Engineer
-
+- **Name:** Md Abu Kayser - Full-Stack Engineer
+- **Project:** _elite-cart-bootstrap5_
+- **Maintainer:** [md-abu-kayser](https://github.com/md-abu-kayser)
 - **GitHub:** [github.com/abu.kayser-official](https://github.com/md-abu-kayser)
 - **Email:** [abu.kayser.official@gmail.com](mailto:abu.kayser.official@gmail.com)
-- **Project:** _elite-cart-with-bootstrap-5_
 
 If you’d like this README tailored for a specific purpose - such as **hiring managers**, **open-source contributors**, or **client deliverables** - feel free to request a custom tone or format.
 
 ---
 
 **Thank you for reviewing this project!**  
-It’s designed to be **clean, well-structured**, and **pleasant to explore** - perfect for interviews, portfolio showcases, or professional demos.
+It’s designed to be **clean, well-structured**, and **pleasant to explore** - perfect for portfolio showcases, or professional demos.
 
-#### Show Your Support
+### Show Your Support
 
 **If you find this project helpful, please give it a star on GitHub!**
 
