@@ -1,12 +1,12 @@
 # EliteCart - Modern E-Commerce Frontend (Bootstrap 5)
 
-### Overview
+## Overview
 
 EliteCart is a premium, fully-responsive e-commerce frontend solution that combines stunning design with exceptional user experience. Built with modern web standards, it showcases advanced frontend development techniques and best practices.
 
 ## Key Features
 
-### Design Excellence
+**Design Excellence:**
 
 - 5 Premium Themes with seamless switching
 - Dark/Light Mode with system preference detection
@@ -14,7 +14,7 @@ EliteCart is a premium, fully-responsive e-commerce frontend solution that combi
 - Smooth Animations using CSS3 and JavaScript
 - Responsive Design that works flawlessly on all devices
 
-### E-Commerce Functionality
+## E-Commerce Functionality
 
 - Shopping Cart with persistent storage
 - Wishlist Management with real-time updates
@@ -22,7 +22,7 @@ EliteCart is a premium, fully-responsive e-commerce frontend solution that combi
 - Product Catalog with advanced categorization
 - User Accounts interface (frontend mockup)
 
-### Technical Brilliance
+## Technical Brilliance
 
 - Bootstrap 5 with custom components
 - CSS3 Custom Properties for theming
@@ -30,7 +30,7 @@ EliteCart is a premium, fully-responsive e-commerce frontend solution that combi
 - LocalStorage Integration for data persistence
 - Performance Optimized with lazy loading
 
-### Theme System
+## Theme System
 
 - Theme-----------> Primary Color
 - Modern Blue-----> #2563eb
@@ -104,17 +104,25 @@ https://md-abu-kayser.github.io/elite-cart-bootstrap5/
 
 ### Theme Customization
 
+---
+
 // Programmatically change themes
 const themeManager = new ThemeManager();
 themeManager.setTheme('luxury-purple');
 themeManager.toggleDarkMode();
 
+---
+
 ### Product Management
+
+---
 
 // Add product to cart
 productManager.addToCart(productElement);
 // Toggle wishlist
 productManager.toggleWishlist(productElement);
+
+---
 
 ### Responsive Breakpoints
 
