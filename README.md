@@ -6,7 +6,7 @@
 
 <!-- Demo Live Link -->
 
-[![Demo](https://img.shields.io/badge/demo-GitHub%20Pages-brightgreen)](https://md-abu-kayser.github.io/heartscript/)
+[![Demo](https://img.shields.io/badge/demo-GitHub%20Pages-brightgreen)](https://md-abu-kayser.github.io/elite-cart-bootstrap5/)
 
 <!-- HTML & CSS -->
 
