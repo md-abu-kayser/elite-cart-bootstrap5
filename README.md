@@ -3,7 +3,10 @@
 <!-- MIT License -->
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
-[![Demo](https://img.shields.io/badge/demo-GitHub%20Pages-brightgreen)](https://md-abu-kayser.github.io/elite-cart-bootstrap5/)
+
+<!-- Demo Live Link -->
+
+[![Demo](https://img.shields.io/badge/demo-GitHub%20Pages-brightgreen)](https://md-abu-kayser.github.io/heartscript/)
 
 <!-- HTML & CSS -->
 
@@ -252,8 +255,8 @@ class CustomProductManager extends ProductManager {
 - **Name:** Md Abu Kayser - Full-Stack Engineer
 - **Project:** _elite-cart-bootstrap5_
 - **Maintainer:** [md-abu-kayser](https://github.com/md-abu-kayser)
-- **GitHub:** [github.com/abu.kayser-official](https://github.com/md-abu-kayser)
 - **Email:** [abu.kayser.official@gmail.com](mailto:abu.kayser.official@gmail.com)
+- **GitHub:** [github.com/abu.kayser-official](https://github.com/md-abu-kayser)
 
 If you’d like this README tailored for a specific purpose - such as **hiring managers**, **open-source contributors**, or **client deliverables** - feel free to request a custom tone or format.
 
