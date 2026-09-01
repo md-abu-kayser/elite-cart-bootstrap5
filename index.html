@@ -1,73 +1,107 @@
 <!doctype html>
-<html lang="en" data-theme="light" data-color-theme="modern-blue">
+<html lang="en" data-color-theme="modern-blue">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EliteCart - Premium E-Commerce Experience</title>
+    <meta
+      name="description"
+      content="EliteCart - Premium E-Commerce Experience. Shop the latest in fashion, electronics, and accessories."
+    />
+    <meta name="theme-color" content="#2563eb" />
+    <title>EliteCart — Premium Shopping Experience</title>
 
     <!-- Bootstrap 5 -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-
     <!-- Font Awesome -->
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
-
     <!-- Google Fonts -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
-
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/styles.css" />
   </head>
-
   <body>
-    <!-- Announcement Bar -->
-    <div class="announcement-bar">
+    <!-- ==================== PRELOADER ==================== -->
+    <div class="preloader" id="preloader">
+      <div class="preloader-spinner">
+        <div class="spinner-ring"></div>
+        <div class="preloader-logo">
+          <i class="fas fa-crown"></i>
+          <span>EliteCart</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== TOAST CONTAINER ==================== -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- ==================== ANNOUNCEMENT BAR ==================== -->
+    <div class="announcement-bar" id="announcementBar">
       <div class="container">
         <div class="row align-items-center">
           <div class="col-md-6">
-            <span class="announcement-text">
-              <i class="fas fa-shipping-fast me-2"></i>Free Worldwide Shipping
-              on Orders Over $99
-            </span>
+            <div class="announcement-rotator" id="announcementRotator">
+              <span class="announcement-text active">
+                <i class="fas fa-shipping-fast me-2"></i>Free Worldwide Shipping
+                on Orders Over $99
+              </span>
+              <span class="announcement-text">
+                <i class="fas fa-tag me-2"></i>Extra 15% Off with Code: ELITE15
+              </span>
+              <span class="announcement-text">
+                <i class="fas fa-gift me-2"></i>Free Gift Wrapping on All Orders
+              </span>
+            </div>
           </div>
           <div class="col-md-6 text-md-end">
             <div class="theme-controls">
-              <div class="theme-buttons">
+              <div class="theme-buttons" aria-label="Color theme selector">
                 <button
                   class="theme-btn modern-blue active"
                   data-theme="modern-blue"
                   title="Modern Blue"
+                  aria-label="Modern Blue theme"
                 ></button>
                 <button
                   class="theme-btn luxury-purple"
                   data-theme="luxury-purple"
                   title="Luxury Purple"
+                  aria-label="Luxury Purple theme"
                 ></button>
                 <button
                   class="theme-btn nature-green"
                   data-theme="nature-green"
                   title="Nature Green"
+                  aria-label="Nature Green theme"
                 ></button>
                 <button
                   class="theme-btn vibrant-orange"
                   data-theme="vibrant-orange"
                   title="Vibrant Orange"
+                  aria-label="Vibrant Orange theme"
                 ></button>
                 <button
                   class="theme-btn elegant-pink"
                   data-theme="elegant-pink"
                   title="Elegant Pink"
+                  aria-label="Elegant Pink theme"
                 ></button>
               </div>
-              <button class="dark-mode-toggle" id="darkModeToggle">
+              <button
+                class="dark-mode-toggle"
+                id="darkModeToggle"
+                aria-label="Toggle dark mode"
+              >
                 <i class="fas fa-moon"></i>
                 <span>Dark Mode</span>
               </button>
@@ -77,10 +111,13 @@
       </div>
     </div>
 
-    <!-- Professional Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+    <!-- ==================== NAVBAR ==================== -->
+    <nav
+      class="navbar navbar-expand-lg navbar-light sticky-top"
+      id="mainNavbar"
+    >
       <div class="container">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="#" aria-label="EliteCart Home">
           <div class="brand-logo">
             <i class="fas fa-crown"></i>
           </div>
@@ -88,32 +125,43 @@
         </a>
 
         <div class="navbar-actions d-flex align-items-center">
-          <!-- Search -->
-          <div class="search-container">
+          <div class="search-container d-none d-md-flex">
             <div class="search-box">
               <input
                 type="text"
                 class="search-input"
+                id="searchInput"
                 placeholder="Search products..."
+                autocomplete="off"
+                aria-label="Search products"
               />
-              <button class="search-btn">
+              <button class="search-btn" id="searchBtn" aria-label="Search">
                 <i class="fas fa-search"></i>
               </button>
+              <div class="search-suggestions" id="searchSuggestions"></div>
             </div>
           </div>
 
-          <!-- User Actions -->
           <div class="user-actions">
-            <a href="#" class="user-action-btn">
-              <i class="far fa-user"></i>
-            </a>
-            <a href="#" class="user-action-btn">
+            <a
+              href="#"
+              class="user-action-btn"
+              id="wishlistBtn"
+              aria-label="Wishlist"
+            >
               <i class="far fa-heart"></i>
-              <span class="action-badge">3</span>
+              <span class="action-badge" id="wishlistBadge">0</span>
             </a>
-            <a href="#" class="user-action-btn">
+            <a
+              href="#"
+              class="user-action-btn"
+              id="cartBtn"
+              aria-label="Shopping Cart"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#cartDrawer"
+            >
               <i class="fas fa-shopping-bag"></i>
-              <span class="action-badge">2</span>
+              <span class="action-badge" id="cartBadge">0</span>
             </a>
           </div>
 
@@ -122,6 +170,7 @@
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarContent"
+            aria-label="Toggle navigation"
           >
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -134,71 +183,135 @@
                 class="nav-link dropdown-toggle"
                 href="#"
                 data-bs-toggle="dropdown"
+                aria-expanded="false"
               >
-                <i class="fas fa-box me-1"></i>Products
+                <i class="fas fa-box me-1"></i>Shop
               </a>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="#electronics">Electronics</a>
-                <a class="dropdown-item" href="#shoes">Shoes</a>
-                <a class="dropdown-item" href="#backpack">Bags</a>
-                <a class="dropdown-item" href="#watches">Watches</a>
+              <div class="dropdown-menu mega-menu">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <div class="mega-menu-column">
+                      <h6 class="mega-menu-title">Categories</h6>
+                      <a
+                        class="dropdown-item category-filter"
+                        data-category="all"
+                        >All Products</a
+                      >
+                      <a
+                        class="dropdown-item category-filter"
+                        data-category="shoes"
+                        >Shoes</a
+                      >
+                      <a
+                        class="dropdown-item category-filter"
+                        data-category="bags"
+                        >Bags</a
+                      >
+                      <a
+                        class="dropdown-item category-filter"
+                        data-category="watches"
+                        >Watches</a
+                      >
+                      <a
+                        class="dropdown-item category-filter"
+                        data-category="electronics"
+                        >Electronics</a
+                      >
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="mega-menu-column">
+                      <h6 class="mega-menu-title">Trending</h6>
+                      <a class="dropdown-item" href="#products">Best Sellers</a>
+                      <a class="dropdown-item" href="#products">New Arrivals</a>
+                      <a class="dropdown-item" href="#deal">Deal of the Day</a>
+                      <a class="dropdown-item" href="#testimonials"
+                        >Customer Reviews</a
+                      >
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="mega-menu-column mega-menu-promo">
+                      <div class="mega-promo-content">
+                        <span class="mega-promo-badge">HOT</span>
+                        <h6>Summer Sale</h6>
+                        <p>Up to 50% off selected items</p>
+                        <a href="#products" class="btn btn-sm btn-primary"
+                          >Shop Now</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#deals">
-                <i class="fas fa-tag me-1"></i>Deals
-              </a>
+              <a class="nav-link" href="#products"
+                ><i class="fas fa-tag me-1"></i>Deals</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#new">
-                <i class="fas fa-star me-1"></i>New Arrivals
-              </a>
+              <a class="nav-link" href="#products"
+                ><i class="fas fa-star me-1"></i>New Arrivals</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#brands">
-                <i class="fas fa-copyright me-1"></i>Brands
-              </a>
+              <a class="nav-link" href="#brands"
+                ><i class="fas fa-copyright me-1"></i>Brands</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#subscribe">
-                <i class="fas fa-envelope me-1"></i>Newsletter
-              </a>
+              <a class="nav-link" href="#subscribe"
+                ><i class="fas fa-envelope me-1"></i>Newsletter</a
+              >
             </li>
           </ul>
         </div>
       </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="hero-section" id="home">
       <div class="container">
         <div class="row align-items-center min-vh-80">
           <div class="col-lg-6">
             <div class="hero-content">
-              <div class="hero-badge">Limited Time Offer</div>
-              <h1 class="hero-title">Premium Wireless Headphones</h1>
-              <p class="hero-description">
+              <div class="hero-badge" data-aos="fade-up">
+                <i class="fas fa-fire me-1"></i> Limited Time Offer
+              </div>
+              <h1 class="hero-title" data-aos="fade-up" data-aos-delay="100">
+                Premium Wireless <span class="gradient-text">Headphones</span>
+              </h1>
+              <p
+                class="hero-description"
+                data-aos="fade-up"
+                data-aos-delay="200"
+              >
                 Experience crystal-clear sound with our noise-cancelling
                 wireless headphones. Premium quality meets cutting-edge
-                technology.
+                technology for the ultimate listening experience.
               </p>
 
-              <div class="hero-features">
+              <div
+                class="hero-features"
+                data-aos="fade-up"
+                data-aos-delay="300"
+              >
                 <div class="feature">
-                  <i class="fas fa-check"></i>
+                  <i class="fas fa-check-circle"></i>
                   <span>40-hour battery life</span>
                 </div>
                 <div class="feature">
-                  <i class="fas fa-check"></i>
+                  <i class="fas fa-check-circle"></i>
                   <span>Active noise cancellation</span>
                 </div>
                 <div class="feature">
-                  <i class="fas fa-check"></i>
+                  <i class="fas fa-check-circle"></i>
                   <span>Premium comfort design</span>
                 </div>
               </div>
 
-              <div class="hero-pricing">
+              <div class="hero-pricing" data-aos="fade-up" data-aos-delay="400">
                 <div class="price">
                   <span class="current-price">$299</span>
                   <span class="original-price">$399</span>
@@ -206,24 +319,43 @@
                 </div>
               </div>
 
-              <div class="hero-actions">
-                <button class="btn btn-primary btn-lg">
+              <div class="hero-actions" data-aos="fade-up" data-aos-delay="500">
+                <button
+                  class="btn btn-primary btn-lg hero-add-to-cart"
+                  data-product-id="hero-headphones"
+                >
                   <i class="fas fa-shopping-cart me-2"></i>Add to Cart
                 </button>
-                <button class="btn btn-outline-secondary btn-lg">
-                  Learn More
-                </button>
+                <a href="#products" class="btn btn-outline-secondary btn-lg"
+                  >Explore More</a
+                >
+              </div>
+
+              <div class="hero-trust" data-aos="fade-up" data-aos-delay="600">
+                <div class="trust-item">
+                  <i class="fas fa-star"></i>
+                  <span>4.9/5 Rating</span>
+                </div>
+                <div class="trust-item">
+                  <i class="fas fa-users"></i>
+                  <span>10K+ Customers</span>
+                </div>
+                <div class="trust-item">
+                  <i class="fas fa-shield-alt"></i>
+                  <span>2-Year Warranty</span>
+                </div>
               </div>
             </div>
           </div>
           <div class="col-lg-6">
-            <div class="hero-image">
+            <div class="hero-image" data-aos="zoom-in" data-aos-delay="200">
               <img
                 src="images/banner-images/headphone.png"
-                alt="Premium Headphones"
+                alt="Premium Wireless Headphones"
                 class="img-fluid"
+                loading="eager"
               />
-              <div class="floating-card">
+              <div class="floating-card floating-card-1">
                 <div class="card-content">
                   <i class="fas fa-fire"></i>
                   <div>
@@ -232,97 +364,153 @@
                   </div>
                 </div>
               </div>
+              <div class="floating-card floating-card-2">
+                <div class="card-content">
+                  <i class="fas fa-truck"></i>
+                  <div>
+                    <strong>Free Shipping</strong>
+                    <span>2-Day Delivery</span>
+                  </div>
+                </div>
+              </div>
+              <div class="hero-glow"></div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Features Grid -->
-    <section class="features-section">
+    <!-- ==================== FEATURES SECTION ==================== -->
+    <section class="features-section" id="features">
       <div class="container">
         <div class="row g-4">
-          <div class="col-md-3 col-sm-6">
+          <div class="col-md-3 col-sm-6" data-aos="fade-up">
             <div class="feature-card">
-              <div class="feature-icon">
+              <div class="feature-icon icon-blue">
                 <i class="fas fa-rocket"></i>
               </div>
               <h5>Fast Delivery</h5>
-              <p>Free 2-day delivery on all orders</p>
+              <p>Free 2-day delivery on all orders over $99</p>
+              <span class="feature-link">Learn More →</span>
             </div>
           </div>
-          <div class="col-md-3 col-sm-6">
+          <div
+            class="col-md-3 col-sm-6"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
             <div class="feature-card">
-              <div class="feature-icon">
+              <div class="feature-icon icon-green">
                 <i class="fas fa-shield-alt"></i>
               </div>
               <h5>Secure Payment</h5>
-              <p>100% secure payment processing</p>
+              <p>100% secure payment processing with encryption</p>
+              <span class="feature-link">Learn More →</span>
             </div>
           </div>
-          <div class="col-md-3 col-sm-6">
+          <div
+            class="col-md-3 col-sm-6"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
             <div class="feature-card">
-              <div class="feature-icon">
+              <div class="feature-icon icon-purple">
                 <i class="fas fa-undo"></i>
               </div>
               <h5>Easy Returns</h5>
-              <p>30-day money back guarantee</p>
+              <p>30-day money back guarantee on all purchases</p>
+              <span class="feature-link">Learn More →</span>
             </div>
           </div>
-          <div class="col-md-3 col-sm-6">
+          <div
+            class="col-md-3 col-sm-6"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
             <div class="feature-card">
-              <div class="feature-icon">
+              <div class="feature-icon icon-orange">
                 <i class="fas fa-headset"></i>
               </div>
               <h5>24/7 Support</h5>
-              <p>Round-the-clock customer service</p>
+              <p>Round-the-clock customer service via chat & email</p>
+              <span class="feature-link">Learn More →</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Categories Section -->
-    <section class="categories-section">
+    <!-- ==================== CATEGORIES SECTION ==================== -->
+    <section class="categories-section" id="categories">
       <div class="container">
-        <div class="section-header">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-tag">Collections</span>
           <h2 class="section-title">Shop by Category</h2>
           <p class="section-subtitle">Discover our curated collections</p>
         </div>
 
         <div class="row g-4">
-          <div class="col-lg-4 col-md-6">
-            <div class="category-card">
+          <div class="col-lg-4 col-md-6" data-aos="fade-up">
+            <div class="category-card" data-category="watches">
               <div class="category-image">
-                <img src="images/categories/watch.png" alt="Watches" />
+                <img
+                  src="images/categories/watch.png"
+                  alt="Luxury Watches"
+                  loading="lazy"
+                />
                 <div class="category-overlay">
+                  <span class="category-count">24 Products</span>
                   <h4>Luxury Watches</h4>
-                  <p>Premium timepieces</p>
-                  <button class="btn btn-outline-light">Explore</button>
+                  <p>Premium timepieces for every occasion</p>
+                  <button class="btn btn-outline-light btn-sm">
+                    Explore Collection
+                  </button>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="category-card">
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="category-card" data-category="bags">
               <div class="category-image">
-                <img src="images/categories/bag.png" alt="Bags" />
+                <img
+                  src="images/categories/bag.png"
+                  alt="Designer Bags"
+                  loading="lazy"
+                />
                 <div class="category-overlay">
+                  <span class="category-count">18 Products</span>
                   <h4>Designer Bags</h4>
-                  <p>Stylish & functional</p>
-                  <button class="btn btn-outline-light">Explore</button>
+                  <p>Stylish & functional for everyday use</p>
+                  <button class="btn btn-outline-light btn-sm">
+                    Explore Collection
+                  </button>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="category-card">
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="category-card" data-category="shoes">
               <div class="category-image">
-                <img src="images/categories/shoes.png" alt="Shoes" />
+                <img
+                  src="images/categories/shoes.png"
+                  alt="Premium Shoes"
+                  loading="lazy"
+                />
                 <div class="category-overlay">
+                  <span class="category-count">32 Products</span>
                   <h4>Premium Shoes</h4>
-                  <p>Comfort meets style</p>
-                  <button class="btn btn-outline-light">Explore</button>
+                  <p>Comfort meets style in every step</p>
+                  <button class="btn btn-outline-light btn-sm">
+                    Explore Collection
+                  </button>
                 </div>
               </div>
             </div>
@@ -331,171 +519,139 @@
       </div>
     </section>
 
-    <!-- Featured Products -->
-    <section class="products-section" id="shoes">
+    <!-- ==================== PRODUCTS SECTION ==================== -->
+    <section class="products-section" id="products">
       <div class="container">
-        <div class="section-header">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-tag">Our Products</span>
           <h2 class="section-title">Featured Products</h2>
           <p class="section-subtitle">
             Carefully selected for quality and style
           </p>
         </div>
 
-        <div class="row g-4">
-          <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="product-card">
-              <div class="product-image">
-                <img src="images/shoes/shoe-1.png" alt="Supply 350" />
-                <div class="product-actions">
-                  <button class="action-btn wishlist-btn">
-                    <i class="far fa-heart"></i>
-                  </button>
-                  <button class="action-btn view-btn">
-                    <i class="far fa-eye"></i>
-                  </button>
-                </div>
-                <div class="product-badge sale">Sale</div>
-              </div>
-              <div class="product-info">
-                <h5 class="product-title">Supply 350</h5>
-                <p class="product-description">
-                  Premium comfort with advanced cushioning technology
-                </p>
-                <div class="product-rating">
-                  <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                  </div>
-                  <span class="rating-count">(128)</span>
-                </div>
-                <div class="product-price">
-                  <span class="current-price">$160</span>
-                  <span class="original-price">$200</span>
-                </div>
-                <button class="btn btn-primary w-100 add-to-cart">
-                  <i class="fas fa-shopping-cart me-2"></i>Add to Cart
+        <!-- Filter and Sort Controls -->
+        <div class="product-controls" data-aos="fade-up" data-aos-delay="100">
+          <div class="row align-items-center">
+            <div class="col-lg-6">
+              <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="shoes">Shoes</button>
+                <button class="filter-btn" data-filter="bags">Bags</button>
+                <button class="filter-btn" data-filter="watches">
+                  Watches
+                </button>
+                <button class="filter-btn" data-filter="electronics">
+                  Electronics
                 </button>
               </div>
             </div>
-          </div>
-
-          <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="product-card">
-              <div class="product-image">
-                <img src="images/shoes/shoe-2.png" alt="Nike 360" />
-                <div class="product-actions">
-                  <button class="action-btn wishlist-btn">
-                    <i class="far fa-heart"></i>
-                  </button>
-                  <button class="action-btn view-btn">
-                    <i class="far fa-eye"></i>
-                  </button>
-                </div>
-                <div class="product-badge new">New</div>
-              </div>
-              <div class="product-info">
-                <h5 class="product-title">Nike 360</h5>
-                <p class="product-description">
-                  Advanced athletic performance with style
-                </p>
-                <div class="product-rating">
-                  <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                  </div>
-                  <span class="rating-count">(95)</span>
-                </div>
-                <div class="product-price">
-                  <span class="current-price">$180</span>
-                </div>
-                <button class="btn btn-primary w-100 add-to-cart">
-                  <i class="fas fa-shopping-cart me-2"></i>Add to Cart
-                </button>
+            <div class="col-lg-6 text-lg-end">
+              <div class="sort-control">
+                <label for="sortSelect">Sort By:</label>
+                <select id="sortSelect" class="form-select">
+                  <option value="featured">Featured</option>
+                  <option value="price-low">Price: Low to High</option>
+                  <option value="price-high">Price: High to Low</option>
+                  <option value="rating">Highest Rated</option>
+                  <option value="name">Name: A-Z</option>
+                </select>
               </div>
             </div>
           </div>
+        </div>
 
-          <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="product-card">
-              <div class="product-image">
-                <img src="images/shoes/shoe-3.png" alt="Red Airmax" />
-                <div class="product-actions">
-                  <button class="action-btn wishlist-btn">
-                    <i class="far fa-heart"></i>
-                  </button>
-                  <button class="action-btn view-btn">
-                    <i class="far fa-eye"></i>
-                  </button>
-                </div>
-                <div class="product-badge hot">Hot</div>
+        <!-- Products Grid -->
+        <div class="row g-4 mt-3" id="productsGrid">
+          <!-- Products will be rendered dynamically by JavaScript -->
+        </div>
+
+        <!-- Empty State -->
+        <div class="empty-state" id="emptyState" style="display: none">
+          <div class="empty-icon">
+            <i class="fas fa-search"></i>
+          </div>
+          <h4>No Products Found</h4>
+          <p>Try adjusting your search or filter criteria.</p>
+          <button class="btn btn-primary" id="resetFilters">
+            Reset Filters
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== DEAL OF THE DAY ==================== -->
+    <section class="deal-section" id="deal">
+      <div class="container">
+        <div class="deal-card" data-aos="zoom-in">
+          <div class="row align-items-center g-0">
+            <div class="col-lg-6">
+              <div class="deal-image">
+                <img
+                  src="images/shoes/shoe-3.png"
+                  alt="Deal of the Day - Red Airmax"
+                  loading="lazy"
+                />
               </div>
-              <div class="product-info">
-                <h5 class="product-title">Red Airmax</h5>
-                <p class="product-description">
-                  Bold design with maximum comfort and support
+            </div>
+            <div class="col-lg-6">
+              <div class="deal-content">
+                <span class="deal-badge"
+                  ><i class="fas fa-bolt me-1"></i> Deal of the Day</span
+                >
+                <h2>Red Airmax — Premium Edition</h2>
+                <p class="deal-description">
+                  Bold design with maximum comfort and support. Get the iconic
+                  look at an unbeatable price.
                 </p>
-                <div class="product-rating">
-                  <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                  </div>
-                  <span class="rating-count">(156)</span>
-                </div>
-                <div class="product-price">
+                <div class="deal-price">
                   <span class="current-price">$220</span>
                   <span class="original-price">$280</span>
+                  <span class="discount">21% OFF</span>
                 </div>
-                <button class="btn btn-primary w-100 add-to-cart">
-                  <i class="fas fa-shopping-cart me-2"></i>Add to Cart
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="product-card">
-              <div class="product-image">
-                <img src="images/bags/bag-1.png" alt="Red Laltu Bag" />
-                <div class="product-actions">
-                  <button class="action-btn wishlist-btn">
-                    <i class="far fa-heart"></i>
-                  </button>
-                  <button class="action-btn view-btn">
-                    <i class="far fa-eye"></i>
-                  </button>
-                </div>
-              </div>
-              <div class="product-info">
-                <h5 class="product-title">Red Laltu Bag</h5>
-                <p class="product-description">
-                  Stylish and spacious travel companion
-                </p>
-                <div class="product-rating">
-                  <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
+                <div class="countdown" id="countdownTimer">
+                  <div class="countdown-item">
+                    <span class="countdown-value" id="countdownHours">00</span>
+                    <span class="countdown-label">Hours</span>
                   </div>
-                  <span class="rating-count">(64)</span>
+                  <div class="countdown-separator">:</div>
+                  <div class="countdown-item">
+                    <span class="countdown-value" id="countdownMinutes"
+                      >00</span
+                    >
+                    <span class="countdown-label">Minutes</span>
+                  </div>
+                  <div class="countdown-separator">:</div>
+                  <div class="countdown-item">
+                    <span class="countdown-value" id="countdownSeconds"
+                      >00</span
+                    >
+                    <span class="countdown-label">Seconds</span>
+                  </div>
                 </div>
-                <div class="product-price">
-                  <span class="current-price">$89</span>
-                  <span class="original-price">$120</span>
-                </div>
-                <button class="btn btn-primary w-100 add-to-cart">
-                  <i class="fas fa-shopping-cart me-2"></i>Add to Cart
+                <button
+                  class="btn btn-primary btn-lg deal-add-to-cart"
+                  data-product-id="red-airmax"
+                >
+                  <i class="fas fa-shopping-cart me-2"></i>Get This Deal
                 </button>
+                <div class="deal-progress">
+                  <div class="progress-label">
+                    <span>Sold</span>
+                    <span>85%</span>
+                  </div>
+                  <div class="progress">
+                    <div
+                      class="progress-bar"
+                      style="width: 85%"
+                      role="progressbar"
+                      aria-valuenow="85"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    ></div>
+                  </div>
+                  <span class="stock-left">Only 7 left in stock!</span>
+                </div>
               </div>
             </div>
           </div>
@@ -503,17 +659,178 @@
       </div>
     </section>
 
-    <!-- Newsletter Section -->
+    <!-- ==================== TESTIMONIALS SECTION ==================== -->
+    <section class="testimonials-section" id="testimonials">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-tag">Testimonials</span>
+          <h2 class="section-title">What Our Customers Say</h2>
+          <p class="section-subtitle">Real reviews from real shoppers</p>
+        </div>
+
+        <div
+          id="testimonialCarousel"
+          class="carousel slide"
+          data-bs-ride="carousel"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          <div class="carousel-indicators">
+            <button
+              type="button"
+              data-bs-target="#testimonialCarousel"
+              data-bs-slide-to="0"
+              class="active"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#testimonialCarousel"
+              data-bs-slide-to="1"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#testimonialCarousel"
+              data-bs-slide-to="2"
+            ></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="testimonial-card">
+                <div class="testimonial-avatar">
+                  <i class="fas fa-user"></i>
+                </div>
+                <div class="testimonial-content">
+                  <div class="testimonial-stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i
+                    ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                    ><i class="fas fa-star"></i>
+                  </div>
+                  <p class="testimonial-text">
+                    "Absolutely love my new headphones! The sound quality is
+                    incredible and the noise cancellation is top-notch. Shipping
+                    was fast and the packaging was beautiful."
+                  </p>
+                  <h5 class="testimonial-name">Sarah Johnson</h5>
+                  <span class="testimonial-role">Verified Buyer</span>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="testimonial-card">
+                <div class="testimonial-avatar">
+                  <i class="fas fa-user"></i>
+                </div>
+                <div class="testimonial-content">
+                  <div class="testimonial-stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i
+                    ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                    ><i class="fas fa-star-half-alt"></i>
+                  </div>
+                  <p class="testimonial-text">
+                    "The quality of the shoes exceeded my expectations. I've
+                    been wearing them daily for months and they still look brand
+                    new. Will definitely buy again!"
+                  </p>
+                  <h5 class="testimonial-name">Michael Chen</h5>
+                  <span class="testimonial-role">Verified Buyer</span>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="testimonial-card">
+                <div class="testimonial-avatar">
+                  <i class="fas fa-user"></i>
+                </div>
+                <div class="testimonial-content">
+                  <div class="testimonial-stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i
+                    ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                    ><i class="fas fa-star"></i>
+                  </div>
+                  <p class="testimonial-text">
+                    "Best customer service I've ever experienced! The team went
+                    above and beyond to help me find the perfect bag. Five stars
+                    all around!"
+                  </p>
+                  <h5 class="testimonial-name">Emily Rodriguez</h5>
+                  <span class="testimonial-role">Verified Buyer</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#testimonialCarousel"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon"></span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#testimonialCarousel"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon"></span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== BRANDS SECTION ==================== -->
+    <section class="brands-section" id="brands">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-tag">Trusted By</span>
+          <h2 class="section-title">Our Partner Brands</h2>
+          <p class="section-subtitle">
+            We collaborate with the world's leading brands
+          </p>
+        </div>
+
+        <div class="brands-grid" data-aos="fade-up" data-aos-delay="100">
+          <div class="brand-item">
+            <i class="fab fa-apple"></i><span>Apple</span>
+          </div>
+          <div class="brand-item">
+            <i class="fab fa-google"></i><span>Google</span>
+          </div>
+          <div class="brand-item">
+            <i class="fab fa-amazon"></i><span>Amazon</span>
+          </div>
+          <div class="brand-item">
+            <i class="fab fa-microsoft"></i><span>Microsoft</span>
+          </div>
+          <div class="brand-item">
+            <i class="fab fa-spotify"></i><span>Spotify</span>
+          </div>
+          <div class="brand-item">
+            <i class="fab fa-adidas"></i><span>Adidas</span>
+          </div>
+          <div class="brand-item">
+            <i class="fab fa-nike"></i><span>Nike</span>
+          </div>
+          <div class="brand-item">
+            <i class="fab fa-samsung"></i><span>Samsung</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== NEWSLETTER SECTION ==================== -->
     <section class="newsletter-section" id="subscribe">
       <div class="container">
-        <div class="newsletter-card">
-          <div class="row align-items-center">
+        <div class="newsletter-card" data-aos="zoom-in">
+          <div class="row align-items-center g-5">
             <div class="col-lg-6">
               <div class="newsletter-content">
-                <h2>Stay in the Loop</h2>
+                <span class="newsletter-badge">Stay Updated</span>
+                <h2>Join Our Newsletter</h2>
                 <p>
-                  Subscribe to our newsletter and be the first to know about
-                  exclusive deals, new arrivals, and special promotions.
+                  Subscribe and be the first to know about exclusive deals, new
+                  arrivals, and special promotions. Get 15% off your first
+                  order!
                 </p>
                 <div class="newsletter-stats">
                   <div class="stat">
@@ -533,21 +850,25 @@
             </div>
             <div class="col-lg-6">
               <div class="newsletter-form">
-                <form>
+                <form id="newsletterForm">
                   <div class="input-group">
+                    <span class="input-group-text"
+                      ><i class="fas fa-envelope"></i
+                    ></span>
                     <input
                       type="email"
                       class="form-control"
-                      placeholder="Enter your email"
+                      placeholder="Enter your email address"
                       required
+                      aria-label="Email address"
                     />
                     <button class="btn btn-primary" type="submit">
-                      <i class="fas fa-paper-plane"></i>
-                      Subscribe
+                      <i class="fas fa-paper-plane me-2"></i> Subscribe
                     </button>
                   </div>
                   <div class="form-text">
-                    By subscribing, you agree to our Privacy Policy
+                    By subscribing, you agree to our
+                    <a href="#">Privacy Policy</a>
                   </div>
                 </form>
               </div>
@@ -557,25 +878,34 @@
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer" id="footer">
       <div class="container">
         <div class="row g-5">
           <div class="col-lg-4">
             <div class="footer-brand">
-              <div class="brand-logo">
-                <i class="fas fa-crown"></i>
-              </div>
+              <div class="brand-logo"><i class="fas fa-crown"></i></div>
               <h4>EliteCart</h4>
               <p>
                 Your premier destination for quality products and exceptional
-                shopping experience.
+                shopping experience. Trusted by over 10,000 customers worldwide.
               </p>
               <div class="social-links">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="Facebook"
+                  ><i class="fab fa-facebook-f"></i
+                ></a>
+                <a href="#" aria-label="Twitter"
+                  ><i class="fab fa-twitter"></i
+                ></a>
+                <a href="#" aria-label="Instagram"
+                  ><i class="fab fa-instagram"></i
+                ></a>
+                <a href="#" aria-label="LinkedIn"
+                  ><i class="fab fa-linkedin-in"></i
+                ></a>
+                <a href="#" aria-label="YouTube"
+                  ><i class="fab fa-youtube"></i
+                ></a>
               </div>
             </div>
           </div>
@@ -583,10 +913,10 @@
           <div class="col-lg-2 col-md-4">
             <h5>Shop</h5>
             <ul class="footer-links">
-              <li><a href="#">All Products</a></li>
-              <li><a href="#shoes">Featured</a></li>
-              <li><a href="#new">New Arrivals</a></li>
-              <li><a href="#deals">On Sale</a></li>
+              <li><a href="#products">All Products</a></li>
+              <li><a href="#products">Featured</a></li>
+              <li><a href="#products">New Arrivals</a></li>
+              <li><a href="#deal">On Sale</a></li>
               <li><a href="#brands">Brands</a></li>
             </ul>
           </div>
@@ -596,9 +926,9 @@
             <ul class="footer-links">
               <li><a href="#">Contact Us</a></li>
               <li><a href="#">Shipping Info</a></li>
-              <li><a href="#">Returns</a></li>
+              <li><a href="#">Returns & Refunds</a></li>
               <li><a href="#">FAQ</a></li>
-              <li><a href="#">Size Guide</a></li>
+              <li><a href="#">Track Order</a></li>
             </ul>
           </div>
 
@@ -607,9 +937,9 @@
             <ul class="footer-links">
               <li><a href="#">About Us</a></li>
               <li><a href="#">Careers</a></li>
-              <li><a href="#">Press</a></li>
+              <li><a href="#">Press & Media</a></li>
               <li><a href="#">Blog</a></li>
-              <li><a href="#">Affiliates</a></li>
+              <li><a href="#">Affiliate Program</a></li>
             </ul>
           </div>
 
@@ -618,7 +948,7 @@
             <div class="contact-info">
               <div class="contact-item">
                 <i class="fas fa-map-marker-alt"></i>
-                <span>123 Fashion St, Sofia</span>
+                <span>123 Fashion St, Sofia, Bulgaria</span>
               </div>
               <div class="contact-item">
                 <i class="fas fa-phone"></i>
@@ -626,7 +956,11 @@
               </div>
               <div class="contact-item">
                 <i class="fas fa-envelope"></i>
-                <span>abu.kayser.official.com</span>
+                <span>support@elitecart.com</span>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-clock"></i>
+                <span>Mon - Sat: 9AM - 8PM</span>
               </div>
             </div>
           </div>
@@ -635,7 +969,11 @@
         <div class="footer-bottom">
           <div class="row align-items-center">
             <div class="col-md-6">
-              <p>&copy; 2026 EliteCart. All rights reserved.</p>
+              <p>
+                &copy; 2026 EliteCart. All rights reserved. Made with
+                <i class="fas fa-heart" style="color: #ef4444"></i> for premium
+                shopping.
+              </p>
             </div>
             <div class="col-md-6 text-md-end">
               <div class="payment-methods">
@@ -644,6 +982,8 @@
                 <i class="fab fa-cc-mastercard"></i>
                 <i class="fab fa-cc-paypal"></i>
                 <i class="fab fa-cc-apple-pay"></i>
+                <i class="fab fa-cc-amex"></i>
+                <i class="fab fa-cc-discover"></i>
               </div>
             </div>
           </div>
@@ -651,9 +991,123 @@
       </div>
     </footer>
 
-    <!-- Bootstrap JS -->
+    <!-- ==================== CART DRAWER ==================== -->
+    <div
+      class="offcanvas offcanvas-end cart-drawer"
+      tabindex="-1"
+      id="cartDrawer"
+      aria-labelledby="cartDrawerLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="cartDrawerLabel">
+          <i class="fas fa-shopping-bag me-2"></i>Your Cart
+          <span class="cart-count-badge" id="cartDrawerCount">0</span>
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <div class="cart-items" id="cartItems">
+          <!-- Cart items will be rendered here -->
+        </div>
+        <div class="cart-empty" id="cartEmpty">
+          <div class="empty-icon"><i class="fas fa-shopping-bag"></i></div>
+          <p>Your cart is empty</p>
+          <button class="btn btn-primary" data-bs-dismiss="offcanvas">
+            Start Shopping
+          </button>
+        </div>
+      </div>
+      <div class="cart-footer" id="cartFooter" style="display: none">
+        <div class="cart-subtotal">
+          <span>Subtotal</span>
+          <span class="cart-subtotal-amount" id="cartSubtotal">$0.00</span>
+        </div>
+        <div class="cart-shipping">
+          <i class="fas fa-truck"></i>
+          <span>Free shipping on orders over $99</span>
+        </div>
+        <button class="btn btn-primary w-100 mb-2">Checkout</button>
+        <button class="btn btn-outline-secondary w-100" id="clearCart">
+          Clear Cart
+        </button>
+      </div>
+    </div>
+
+    <!-- ==================== QUICK VIEW MODAL ==================== -->
+    <div
+      class="modal fade quick-view-modal"
+      id="quickViewModal"
+      tabindex="-1"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Product Details</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="quick-view-image">
+                  <img id="quickViewImage" src="" alt="" />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <h3 id="quickViewTitle"></h3>
+                <div class="quick-view-rating">
+                  <div class="stars" id="quickViewStars"></div>
+                  <span id="quickViewRatingCount"></span>
+                </div>
+                <p id="quickViewDescription"></p>
+                <div class="quick-view-price">
+                  <span class="current-price" id="quickViewCurrentPrice"></span>
+                  <span
+                    class="original-price"
+                    id="quickViewOriginalPrice"
+                  ></span>
+                </div>
+                <div class="quick-view-actions">
+                  <button class="btn btn-primary" id="quickViewAddToCart">
+                    <i class="fas fa-shopping-cart me-2"></i>Add to Cart
+                  </button>
+                  <button
+                    class="btn btn-outline-secondary"
+                    id="quickViewWishlist"
+                  >
+                    <i class="far fa-heart"></i>
+                  </button>
+                </div>
+                <div class="quick-view-meta">
+                  <p><i class="fas fa-check"></i> In stock</p>
+                  <p><i class="fas fa-truck"></i> Free shipping</p>
+                  <p><i class="fas fa-shield-alt"></i> 2-year warranty</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== BACK TO TOP ==================== -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- ==================== SCRIPTS ==================== -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom JS -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script src="js/script.js"></script>
   </body>
 </html>
